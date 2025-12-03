@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЭЛАР | Твой гид в учебе</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="ЭЛАР логотип" class="logo-img">
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#about" class="nav-link"><span>О проекте</span></a></li>
+                    <li><a href="#features" class="nav-link"><span>Возможности</span></a></li>
+                    <li><a href="#timer" class="nav-link"><span>До запуска</span></a></li>
+                    <li><a href="#contact" class="nav-link"><span>Контакты</span></a></li>
+                </ul>
+            </nav>
+            
+            <!-- Бургер меню для мобильных -->
+            <button class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Мобильное меню -->
+            <div class="mobile-nav" id="mobileNav">
+                <div class="mobile-nav-header">
+                    <div class="logo">
+                        
+                    </div>
+                    <button class="close-menu" id="closeMenu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <ul>
+                    <li><a href="#about" class="mobile-nav-link"><i class="fas fa-info-circle"></i> О проекте</a></li>
+                    <li><a href="#features" class="mobile-nav-link"><i class="fas fa-star"></i> Возможности</a></li>
+                    <li><a href="#timer" class="mobile-nav-link"><i class="fas fa-clock"></i> До запуска</a></li>
+                    <li><a href="#contact" class="mobile-nav-link"><i class="fas fa-envelope"></i> Контакты</a></li>
+                </ul>
+                <div class="mobile-contact">
+                    <p>Калининград, КГТУ</p>
+                    <li><a href="mailto:elar-kstu@gmail.com"><i class="fas fa-envelope"></i> elar-kstu@gmail.com</a></li>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge animate__animated animate__fadeInDown">
+                    <span>Современная цифровая платформа</span>
+                </div>
+                <h1 class="animate__animated animate__fadeInUp animate__delay-1s">Электронная Личная Академическая Регистр-система</h1>
+                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-2s">Единая цифровая экосистема для КГТУ, объединяющая студентов, преподавателей, старост и администрацию в одном интуитивном пространстве</p>
+                <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-3s">
+                    <a href="#timer" class="hero-cta">
+                        <span>Следить за запуском</span>
+                        <i class="fas fa-rocket"></i>
+                    </a>
+                    <a href="#features" class="hero-cta secondary">
+                        <span>Узнать больше</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Анимированные элементы -->
+            <div class="floating-elements">
+                <div class="floating-element el1"><i class="fas fa-user-graduate"></i></div>
+                <div class="floating-element el2"><i class="fas fa-chart-line"></i></div>
+                <div class="floating-element el3"><i class="fas fa-calendar-alt"></i></div>
+                <div class="floating-element el4"><i class="fas fa-comments"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timer Section -->
+    <section class="timer-section" id="timer">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">До запуска продукта</h2>
+            <p class="section-subtitle animate-on-scroll">Мы готовимся представить ЭЛАР — современную платформу для полной цифровизации учебного процесса в КГТУ</p>
+            
+            <div class="timer">
+                <div class="timer-item animate-on-scroll">
+                    <div class="timer-value-container">
+                        <div class="timer-value" id="days">00</div>
+                        <div class="timer-dot"></div>
+                    </div>
+                    <div class="timer-label">Дней</div>
+                </div>
+                <div class="timer-item animate-on-scroll">
+                    <div class="timer-value-container">
+                        <div class="timer-value" id="hours">00</div>
+                        <div class="timer-dot"></div>
+                    </div>
+                    <div class="timer-label">Часов</div>
+                </div>
+                <div class="timer-item animate-on-scroll">
+                    <div class="timer-value-container">
+                        <div class="timer-value" id="minutes">00</div>
+                        <div class="timer-dot"></div>
+                    </div>
+                    <div class="timer-label">Минут</div>
+                </div>
+                <div class="timer-item animate-on-scroll">
+                    <div class="timer-value-container">
+                        <div class="timer-value" id="seconds">00</div>
+                    </div>
+                    <div class="timer-label">Секунд</div>
+                </div>
+            </div>
+            
+            <div class="progress-container animate-on-scroll">
+                <div class="progress-label">
+                    <span>Прогресс разработки</span>
+                    <span id="progressPercent">85%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+            
+            <p class="timer-note animate-on-scroll">Запуск запланирован на <span class="highlight">22 декабря 2025 года</span></p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Ключевые преимущества</h2>
+            <p class="section-subtitle animate-on-scroll">ЭЛАР — это не просто "ещё один электронный дневник", а живая цифровая среда для взаимодействия</p>
+            
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <div class="icon-circle">
+                            <i class="fas fa-universal-access"></i>
+                        </div>
+                        <div class="feature-number">01</div>
+                    </div>
+                    <h3 class="feature-title">Единая экосистема</h3>
+                    <p class="feature-desc">Объединяет студентов, преподавателей, старост и администрацию в одном удобном, интуитивно понятном пространстве с персонализированным рабочим столом для каждого пользователя.</p>
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Снижение информационного шума на 60%</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <div class="icon-circle">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-number">02</div>
+                    </div>
+                    <h3 class="feature-title">Мощная аналитика</h3>
+                    <p class="feature-desc">Система отслеживает успеваемость и прогнозирует академические риски для студентов с помощью «Учебного пульса», автоматически формирует аналитические отчеты для преподавателей.</p>
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Автоматизация 80% рутинных отчетов</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <div class="icon-circle">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="feature-number">03</div>
+                    </div>
+                    <h3 class="feature-title">Эффективность и удобство</h3>
+                    <p class="feature-desc">Экономит время и снижает информационный шум, объединяя расписание, коммуникацию, управление и данные в одном защищённом интерфейсе с поддержкой светлой и тёмной тем.</p>
+                    <div class="feature-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Экономия времени до 15 часов в месяц</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Статистика -->
+            <div class="stats-container animate-on-scroll">
+                <div class="stat-item">
+                    <div class="stat-value" data-count="1000">0</div>
+                    <div class="stat-label">Пользователей</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" data-count="50">0</div>
+                    <div class="stat-label">Групп</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" data-count="24">0</div>
+                    <div class="stat-label">Часа поддержки</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" data-count="99">0</div>
+                    <div class="stat-label">% надежности</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-card animate-on-scroll">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="quote">«Мы не просто информируем, мы анализируем, прогнозируем и рекомендуем, превращая данные в полезные перспективы. Мы упрощаем рутину и повышаем вовлечённость и осознанность»</p>
+                <div class="quote-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="author-info">
+                        <div class="author-name">Команда проекта ЭЛАР</div>
+                        <div class="author-role">Калининградский государственный технический университет</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="img/logo_w.png" alt="ЭЛАР логотип" class="logo-img">
+                    </div>
+                    <p class="footer-desc">Современная цифровая платформа, созданная для Калининградского государственного технического университета с целью полной цифровизации учебного процесса.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Проект</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#features">Возможности</a></li>
+                        <li><a href="#timer">До запуска</a></li>
+                        <li><a href="#">Документация</a></li>
+                        <li><a href="#">Вопросы и ответы</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:elar-kstu@gmail.com"><i class="fas fa-envelope"></i> elar-kstu@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Калининград, КГТУ</li>
+                        <li><i class="fas fa-map-pin"></i> Советский проспект, 1</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Подписаться на новости</h3>
+                    <p class="subscribe-text">Узнайте первым о запуске платформы</p>
+                    <form class="subscribe-form" id="subscribeForm">
+                        <div class="input-group">
+                            <input type="email" placeholder="Ваш email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <div class="form-message" id="formMessage"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 ЭЛАР. Электронная Личная Академическая Регистр-система. Все права защищены.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
