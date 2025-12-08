@@ -8,11 +8,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
     
+    // Глобальные переменные для таймера
+    let timerInterval;
+    let lastValues = {
+        days: '00',
+        hours: '00',
+        minutes: '00',
+        seconds: '00'
+    };
+    
+    // Улучшенная функция обновления значений таймера
+    function updateTimerValue(element, newValue, unit) {
+        const oldValue = parseInt(element.textContent);
+        if (oldValue === newValue) return;
+        
+        // Форматируем значение (добавляем ведущий ноль)
+        const formattedValue = newValue.toString().padStart(2, '0');
+        
+        // Сохраняем текущее значение для проверки изменений
+        lastValues[unit] = formattedValue;
+        
+        // Добавляем класс анимации
+        element.classList.add('updating');
+        
+        // Обновляем значение после начала анимации
+        setTimeout(() => {
+            element.textContent = formattedValue;
+        }, 300);
+        
+        // Убираем класс анимации после её завершения
+        setTimeout(() => {
+            element.classList.remove('updating');
+        }, 600);
+        
+        // Добавляем эффект "пульсации" для секунд
+        if (unit === 'seconds') {
+            element.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 200);
+        }
+    }
+    
+    // Основная функция таймера
     function updateTimer() {
         const now = new Date().getTime();
         const timeLeft = launchDate - now;
         
         if (timeLeft < 0) {
+            // Запуск уже состоялся
+            clearInterval(timerInterval);
             daysEl.innerText = '00';
             hoursEl.innerText = '00';
             minutesEl.innerText = '00';
@@ -24,6 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 timerNote.innerHTML = 'Запуск состоялся! <span class="highlight">Платформа ЭЛАР доступна</span>';
             }
             
+            // Меняем прогресс-бар на 100%
+            if (progressFill && progressPercent) {
+                progressFill.style.width = '100%';
+                progressPercent.textContent = '100%';
+            }
+            
             return;
         }
         
@@ -32,31 +83,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
         
-        // Анимация изменения чисел
-        animateNumberChange(daysEl, days);
-        animateNumberChange(hoursEl, hours);
-        animateNumberChange(minutesEl, minutes);
-        animateNumberChange(secondsEl, seconds);
-    }
-    
-    // Анимация изменения чисел в таймере
-    function animateNumberChange(element, newValue) {
-        const oldValue = parseInt(element.textContent);
-        if (oldValue === newValue) return;
-        
-        element.style.transform = 'translateY(-10px)';
-        element.style.opacity = '0.5';
-        
-        setTimeout(() => {
-            element.textContent = newValue.toString().padStart(2, '0');
-            element.style.transform = 'translateY(0)';
-            element.style.opacity = '1';
-        }, 150);
+        // Обновляем значения с плавной анимацией
+        if (daysEl) updateTimerValue(daysEl, days, 'days');
+        if (hoursEl) updateTimerValue(hoursEl, hours, 'hours');
+        if (minutesEl) updateTimerValue(minutesEl, minutes, 'minutes');
+        if (secondsEl) updateTimerValue(secondsEl, seconds, 'seconds');
     }
     
     // Запуск таймера
-    updateTimer();
-    const timerInterval = setInterval(updateTimer, 1000);
+    if (daysEl && hoursEl && minutesEl && secondsEl) {
+        updateTimer();
+        timerInterval = setInterval(updateTimer, 1000);
+    }
     
     // Анимация прогресс-бара
     const progressFill = document.getElementById('progressFill');
@@ -67,19 +105,27 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateProgressBar() {
         if (progressValue < targetProgress) {
             progressValue++;
-            progressFill.style.width = `${progressValue}%`;
-            progressPercent.textContent = `${progressValue}%`;
             
-            // Меняем цвет в зависимости от прогресса
-            if (progressValue < 30) {
-                progressFill.style.background = 'linear-gradient(to right, #ff3b30, #ff9500)';
-            } else if (progressValue < 70) {
-                progressFill.style.background = 'linear-gradient(to right, #ff9500, #ffcc00)';
-            } else {
-                progressFill.style.background = 'linear-gradient(to right, #34c759, #0044D8)';
+            if (progressFill) {
+                progressFill.style.width = `${progressValue}%`;
             }
             
-            setTimeout(animateProgressBar, 20);
+            if (progressPercent) {
+                progressPercent.textContent = `${progressValue}%`;
+            }
+            
+            // Плавное изменение цвета по мере прогресса
+            if (progressFill) {
+                const hue = 210 + (progressValue * 0.6); // От синего к зеленому
+                const saturation = 80 + (progressValue * 0.2);
+                progressFill.style.background = `linear-gradient(90deg, 
+                    hsl(${hue}, ${saturation}%, 60%) 0%, 
+                    hsl(${hue + 20}, ${saturation}%, 70%) 100%)`;
+            }
+            
+            // Плавное увеличение скорости в конце
+            const delay = progressValue < 70 ? 20 : 10;
+            setTimeout(animateProgressBar, delay);
         }
     }
     
@@ -91,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const progressObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && progressFill && progressPercent) {
                 setTimeout(animateProgressBar, 500);
                 progressObserver.unobserve(entry.target);
             }
@@ -108,8 +154,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const statValues = document.querySelectorAll('.stat-value');
         
         statValues.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-count'));
-            const increment = target / 100;
+            const target = parseInt(stat.getAttribute('data-count')) || 0;
+            const increment = Math.max(target / 100, 1);
             let current = 0;
             
             const updateStat = () => {
@@ -150,38 +196,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileNav = document.getElementById('mobileNav');
     const closeMenu = document.getElementById('closeMenu');
     
-    burgerMenu.addEventListener('click', function() {
-        this.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-        document.body.style.overflow = 'hidden';
-    });
-    
-    closeMenu.addEventListener('click', function() {
-        burgerMenu.classList.remove('active');
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-    
-    // Закрытие мобильного меню при клике на ссылку
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
+    if (burgerMenu && mobileNav && closeMenu) {
+        burgerMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', function() {
             burgerMenu.classList.remove('active');
             mobileNav.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
-    });
+        
+        // Закрытие мобильного меню при клике на ссылку
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                burgerMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
     
     // Плавная прокрутка для всех ссылок
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                e.preventDefault();
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
@@ -193,28 +240,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Кнопка "Наверх"
     const scrollToTopBtn = document.getElementById('scrollToTop');
     
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 500) {
-            scrollToTopBtn.style.display = 'flex';
-        } else {
-            scrollToTopBtn.style.display = 'none';
-        }
-        
-        // Анимация header при прокрутке
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
-        } else {
-            header.style.boxShadow = 'none';
-        }
-    });
-    
-    scrollToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                scrollToTopBtn.style.display = 'flex';
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.style.display = 'none';
+                scrollToTopBtn.classList.remove('active');
+            }
+            
+            // Анимация header при прокрутке
+            const header = document.querySelector('header');
+            if (header) {
+                if (window.scrollY > 100) {
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.boxShadow = 'none';
+                    header.style.backdropFilter = 'blur(5px)';
+                }
+            }
         });
-    });
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
     
     // Анимация элементов при прокрутке
     const animateOnScroll = function() {
@@ -232,18 +287,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', animateOnScroll);
     // Запускаем один раз при загрузке
-    animateOnScroll();
+    setTimeout(animateOnScroll, 100);
     
     // Форма подписки
     const subscribeForm = document.getElementById('subscribeForm');
     const formMessage = document.getElementById('formMessage');
     
-    if (subscribeForm) {
+    if (subscribeForm && formMessage) {
         subscribeForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value;
+            const email = emailInput ? emailInput.value : '';
             
             // Валидация email
             if (!validateEmail(email)) {
@@ -255,7 +310,9 @@ document.addEventListener('DOMContentLoaded', function() {
             showFormMessage('Спасибо! Вы подписались на обновления. Мы сообщим о запуске первыми.', 'success');
             
             // Очистка поля
-            emailInput.value = '';
+            if (emailInput) {
+                emailInput.value = '';
+            }
             
             // Скрытие сообщения через 5 секунд
             setTimeout(() => {
@@ -270,9 +327,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function showFormMessage(text, type) {
-        formMessage.textContent = text;
-        formMessage.className = `form-message ${type}`;
-        formMessage.style.display = 'block';
+        if (formMessage) {
+            formMessage.textContent = text;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+        }
     }
     
     // Динамическое изменение текста в заголовке
@@ -352,10 +411,211 @@ document.addEventListener('DOMContentLoaded', function() {
             const speed = 0.03 + (index * 0.01);
             el.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
         });
+        
+        // Параллакс для CTA секции опроса
+        const surveySection = document.querySelector('.survey-cta');
+        if (surveySection) {
+            const offset = surveySection.offsetTop;
+            const windowHeight = window.innerHeight;
+            
+            if (scrolled + windowHeight > offset) {
+                const parallaxValue = (scrolled - offset + windowHeight) * 0.05;
+                surveySection.style.backgroundPositionY = `${parallaxValue}px`;
+            }
+        }
     });
+    
+    // Анимация для CTA кнопки опроса
+    const surveyButton = document.querySelector('.survey-button');
+    if (surveyButton) {
+        let pulseInterval;
+        
+        // Функция пульсирующей анимации
+        function startPulseAnimation() {
+            pulseInterval = setInterval(() => {
+                surveyButton.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    surveyButton.style.transform = 'scale(1)';
+                }, 500);
+            }, 3000);
+        }
+        
+        // Запускаем анимацию
+        setTimeout(startPulseAnimation, 2000);
+        
+        // Добавляем эффект при наведении
+        surveyButton.addEventListener('mouseenter', function() {
+            if (pulseInterval) {
+                clearInterval(pulseInterval);
+                pulseInterval = null;
+            }
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        surveyButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            if (!pulseInterval) {
+                startPulseAnimation();
+            }
+        });
+        
+        // Клик по кнопке опроса
+        surveyButton.addEventListener('click', function() {
+            // Добавляем эффект клика
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+            
+            // Здесь можно добавить аналитику или другие действия
+            console.log('Кнопка опроса нажата');
+        });
+    }
+    
+    // Анимация для иконки опроса
+    const surveyIcon = document.querySelector('.survey-icon');
+    if (surveyIcon) {
+        setInterval(() => {
+            surveyIcon.style.transform = 'rotate(5deg)';
+            setTimeout(() => {
+                surveyIcon.style.transform = 'rotate(-5deg)';
+            }, 500);
+            setTimeout(() => {
+                surveyIcon.style.transform = 'rotate(0deg)';
+            }, 1000);
+        }, 4000);
+    }
+    
+    // Анимация элементов преимуществ опроса
+    const benefitItems = document.querySelectorAll('.benefit-item');
+    benefitItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'all 0.5s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, 300 + (index * 200));
+    });
+    
+    // Дополнительные анимации при загрузке
+    const quoteCard = document.querySelector('.quote-card');
+    if (quoteCard) {
+        setTimeout(() => {
+            quoteCard.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                quoteCard.style.transform = 'scale(1)';
+            }, 300);
+        }, 1000);
+    }
+    
+    // Загрузка анимированных элементов
+    const loadAnimatedElements = () => {
+        const floatingElements = document.querySelectorAll('.floating-element');
+        floatingElements.forEach((el, index) => {
+            el.style.opacity = '0';
+            setTimeout(() => {
+                el.style.transition = 'opacity 0.5s ease';
+                el.style.opacity = '1';
+            }, 500 + (index * 200));
+        });
+    };
     
     // Запуск всех анимаций после загрузки страницы
     setTimeout(() => {
         document.body.classList.add('loaded');
+        loadAnimatedElements();
+        
+        // Инициализация всех наблюдателей
+        animateOnScroll();
     }, 500);
+    
+    // Обработка видимости кнопки "Наверх" при загрузке
+    if (scrollToTopBtn) {
+        setTimeout(() => {
+            if (window.scrollY > 500) {
+                scrollToTopBtn.style.display = 'flex';
+                scrollToTopBtn.classList.add('active');
+            }
+        }, 100);
+    }
+    
+    // Предотвращение перезагрузки страницы при отправке формы
+    document.addEventListener('submit', function(e) {
+        if (e.target.tagName === 'FORM' && !e.target.action) {
+            e.preventDefault();
+        }
+    });
+    
+    // Улучшенная обработка ресайза окна
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Обновляем позиции элементов при ресайзе
+            animateOnScroll();
+            
+            // Скрываем мобильное меню при увеличении ширины
+            if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
+                if (burgerMenu) burgerMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }, 250);
+    });
+    
+    // Добавляем слушатель для клавиши Escape (закрытие меню)
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('active')) {
+            mobileNav.classList.remove('active');
+            if (burgerMenu) burgerMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Анимация при первом скролле
+    let firstScroll = true;
+    window.addEventListener('scroll', function() {
+        if (firstScroll && window.scrollY > 50) {
+            firstScroll = false;
+            
+            // Анимация для header
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.transition = 'all 0.3s ease';
+            }
+            
+            // Анимация для кнопки наверх
+            if (scrollToTopBtn && window.scrollY > 500) {
+                scrollToTopBtn.style.transition = 'all 0.3s ease';
+            }
+        }
+    });
 });
+
+// Глобальные функции для повторного использования
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
