@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика пользования ЭЛАР | КГТУ</title>
+    <link rel="icon" href="fav.png" type="image/png">
+    <link rel="icon" href="fav.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="fav.png">
+    <link rel="shortcut icon" href="fav.png" type="image/png">
+    
+    <!-- Для современных браузеров -->
+    <link rel="icon" type="image/png" sizes="32x32" href="fav.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="fav.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="fav.png">
+    
+    <!-- Для Android -->
+    <link rel="icon" type="image/png" sizes="192x192" href="fav.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="fav.png">
+    
+    <!-- Цвет темы для мобильных браузеров -->
+    <meta name="theme-color" content="#0044D8">
+    <meta name="msapplication-TileColor" content="#0044D8">
+    <meta name="msapplication-TileImage" content="fav.png">
+    <style>
+        :root {
+            --primary-blue: #0044D8;
+            --secondary-blue: #0036b3;
+            --light-blue: #e6eeff;
+            --accent-blue: #002a8c;
+            --white: #ffffff;
+            --gray-light: #f5f7ff;
+            --gray: #6c757d;
+            --gray-dark: #333333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background-color: var(--gray-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 68, 216, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 50px; 
+            width: auto; 
+            max-width: 150px; 
+            object-fit: contain; 
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-toggle:hover {
+            background: var(--light-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .lang-toggle.active {
+            background: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .lang-flag {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .lang-arrow {
+            font-size: 0.8rem;
+            margin-left: 4px;
+            transition: var(--transition);
+        }
+
+        .lang-toggle:hover .lang-arrow {
+            transform: translateX(2px);
+        }
+
+        main {
+            padding: 2rem 0 4rem;
+        }
+
+        .policy-container {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 68, 216, 0.08);
+            overflow: hidden;
+            border: 1px solid rgba(0, 68, 216, 0.1);
+        }
+
+        .policy-header {
+            background: linear-gradient(135deg, var(--light-blue), rgba(0, 68, 216, 0.05));
+            padding: 2.5rem 2rem;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .policy-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .policy-header .subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .policy-content {
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eef2ff;
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        section h3 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 2px solid var(--light-blue);
+            position: relative;
+        }
+
+        section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--secondary-blue);
+        }
+
+        section p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        section ul {
+            margin-left: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        section li {
+            margin-bottom: 0.7rem;
+            position: relative;
+        }
+
+        section li::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, var(--light-blue), rgba(230, 238, 255, 0.7));
+            padding: 20px;
+            border-left: 4px solid var(--primary-blue);
+            margin: 1.8rem 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 10px rgba(0, 68, 216, 0.05);
+        }
+
+        .highlight strong {
+            color: var(--accent-blue);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: var(--white);
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+ 
+        .footer-logo {
+            height: 45px; 
+            width: auto; 
+            max-width: 120px; 
+            object-fit: contain; 
+            opacity: 0.95;
+            filter: brightness(1.2);
+        }
+
+        .footer-info p {
+            margin-bottom: 0.7rem;
+            opacity: 0.95;
+        }
+
+        .footer-contact {
+            text-align: right;
+        }
+
+        .contact-link {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.7rem;
+            opacity: 0.95;
+            transition: var(--transition);
+            padding: 5px 0;
+        }
+
+        .contact-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+            transform: translateX(-3px);
+        }
+
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .policy-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .policy-content {
+                padding: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-contact {
+                text-align: center;
+            }
+            
+            .lang-toggle {
+                padding: 6px 14px;
+                font-size: 0.9rem;
+            }
+            
+
+            .logo {
+                height: 40px;
+                max-width: 120px;
+            }
+            
+            .footer-logo {
+                height: 35px;
+                max-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
+            
+            .policy-header {
+                padding: 1.5rem 1rem;
+            }
+            
+            section h3 {
+                font-size: 1.2rem;
+            }
+
+            .logo {
+                height: 35px;
+                max-width: 100px;
+            }
+            
+            .footer-logo {
+                height: 30px;
+                max-width: 80px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.7; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .policy-content section {
+            animation: fadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <img src="img/logo_w.png" alt="Логотип ЭЛАР КГТУ" class="logo">
+                <div class="logo-text">
+                    <h1>Единая цифровая экосистема ЭЛАР</h1>
+                    <p>КГТУ - объединяем студентов, преподавателей и администрацию</p>
+                </div>
+            </div>
+            <div class="lang-toggle" id="langToggle">
+                <span class="lang-flag" id="langFlag">🇷🇺</span>
+                <span class="lang-text" id="langText">Русский</span>
+                <span class="lang-arrow">→</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="policy-container">
+                <div class="policy-header">
+                    <h2 id="policyTitle">Политика пользования цифровой экосистемой «ЭЛАР»</h2>
+                    <p class="subtitle" id="policySubtitle">Единая платформа КГТУ для учебного процесса и управления</p>
+                </div>
+                
+                <div class="policy-content">
+                 
+                    <section id="section1">
+                        <h3 id="section1Title">1. Общие положения</h3>
+                        <p id="section1Text1">1.1. Единая цифровая экосистема «ЭЛАР» (далее – Система) – это защищенная онлайн-платформа, созданная для КГТУ с целью объединения студентов, преподавателей, старост и администрации в едином информационно-коммуникационном пространстве.</p>
+                        <p id="section1Text2">1.2. Система предоставляет персонализированный рабочий стол, инструменты для отслеживания успеваемости («Учебный пульс»), прогнозирования академических рисков, формирования аналитических отчетов, управления расписанием и коммуникацией.</p>
+                        <p id="section1Text3">1.3. Настоящая Политика определяет правила доступа, использования Системы и ответственность пользователей.</p>
+                        <p id="section1Text4">1.4. Регистрируясь и входя в Систему, пользователь подтверждает, что ознакомлен, полностью согласен и обязуется соблюдать все условия настоящей Политики.</p>
+                    </section>
+
+                   
+                    <section id="section2">
+                        <h3 id="section2Title">2. Учетные записи и доступ</h3>
+                        <p id="section2Text1">2.1. Доступ к Системе предоставляется исключительно студентам, преподавателям, сотрудникам и администрации КГТУ на основании актуальных данных из университетских баз.</p>
+                        <p id="section2Text2">2.2. Каждый пользователь получает уникальную учетную запись (логин и пароль). Запрещено передавать свои учетные данные третьим лицам, создавать фиктивные аккаунты или получать доступ под чужим именем.</p>
+                        <p id="section2Text3">2.3. Пользователь несет полную ответственность за все действия, совершенные под его учетной записью. При утере данных или подозрении на несанкционированный доступ необходимо немедленно изменить пароль и уведомить службу технической поддержки.</p>
+                        <p id="section2Text4">2.4. Администрация КГТУ оставляет за собой право приостанавливать или блокировать учетные записи при нарушении настоящей Политики или внутренних регламентов университета.</p>
+                    </section>
+
+                  
+                    <section id="section3">
+                        <h3 id="section3Title">3. Правила использования и поведения</h3>
+                        <p id="section3Text1">Пользователь обязуется использовать Систему <strong>ЭЛАР</strong> добросовестно и исключительно в целях, связанных с учебным процессом, преподаванием и административной деятельностью в КГТУ.</p>
+                        
+                        <div class="highlight">
+                            <strong id="prohibitedTitle">Категорически запрещается:</strong>
+                            <ul id="prohibitedList">
+                                <li id="prohibited1"><strong>Нарушать законы РФ и университетские правила:</strong> Размещать противоправные, дискриминационные или оскорбительные материалы.</li>
+                                <li id="prohibited2"><strong>Создавать помехи в работе:</strong> Загружать вредоносное ПО, пытаться взломать или нарушить работоспособность Системы.</li>
+                                <li id="prohibited3"><strong>Нарушать конфиденциальность:</strong> Публиковать персональные данные других пользователей без их согласия.</li>
+                                <li id="prohibited4"><strong>Вводить в заблуждение:</strong> Размещать заведомо ложную информацию, выдавать себя за другого человека.</li>
+                                <li id="prohibited5"><strong>Злоупотреблять коммуникацией:</strong> Рассылать спам, рекламные материалы.</li>
+                                <li id="prohibited6"><strong>Нарушать академическую добросовестность:</strong> Фальсифицировать данные в «Учебном пульсе» или отчетах.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                   
+                    <section id="section4">
+                        <h3 id="section4Title">4. Конфиденциальность и данные</h3>
+                        <p id="section4Text1">4.1. Система «ЭЛАР» обрабатывает персональные данные пользователей в строгом соответствии с Федеральным законом № 152-ФЗ «О персональных данных» и внутренней политикой конфиденциальности КГТУ.</p>
+                        <p id="section4Text2">4.2. Администрация КГТУ принимает все необходимые технические и организационные меры для защиты данных, хранящихся в Системе.</p>
+                        <p id="section4Text3">4.3. Пользователь дает согласие на обработку своих персональных данных, предоставленных университету, для целей функционирования Системы.</p>
+                        <p id="section4Text4">4.4. Аналитические данные (агрегированные и обезличенные), полученные с помощью «Учебного пульса» и отчетов, могут использоваться университетом для улучшения образовательного процесса.</p>
+                    </section>
+
+                   
+                    <section id="section5">
+                        <h3 id="section5Title">5. Функциональные возможности и ответственность</h3>
+                        <p id="section5Text1">5.1. <strong>Персонализированный рабочий стол:</strong> Пользователь может настраивать вид своего рабочего стола в рамках предоставленных интерфейсных возможностей (светлая/тёмная тема, виджеты).</p>
+                        <p id="section5Text2">5.2. <strong>«Учебный пульс» и прогнозирование:</strong> Данные сервиса носят информационно-аналитический характер и являются инструментом для своевременного принятия решений.</p>
+                        <p id="section5Text3">5.3. <strong>Аналитические отчеты:</strong> Преподаватели и администрация несут ответственность за корректность интерпретации данных.</p>
+                        <p id="section5Text4">5.4. <strong>Расписание и коммуникация:</strong> Пользователь обязан регулярно проверять актуальное расписание и официальные объявления в Системе.</p>
+                        <p id="section5Text5">5.5. Администрация КГТУ и разработчики Системы <strong>не несут ответственности</strong> за косвенные убытки или упущенную выгоду, связанные с использованием Системы.</p>
+                    </section>
+
+                    
+                    <section id="section6">
+                        <h3 id="section6Title">6. Заключительные положения</h3>
+                        <p id="section6Text1">6.1. КГТУ оставляет за собой право в одностороннем порядке изменять настоящую Политику. Актуальная версия всегда публикуется в Системе «ЭЛАР».</p>
+                        <p id="section6Text2">6.2. Все споры, возникающие в связи с использованием Системы, разрешаются в соответствии с законодательством Российской Федерации.</p>
+                        <p id="section6Text3">6.3. Факт использования вами Системы «ЭЛАР» после внесения любых изменений в Политику означает ваше согласие с этими изменениями.</p>
+                    </section>
+
+                   
+                    <section id="section7">
+                        <h3 id="section7Title">7. Контакты для обращений</h3>
+                        <p id="section7Text1">По всем вопросам, связанным с работой Системы, нарушением настоящей Политики или техническими проблемами, обращайтесь в службу поддержки КГТУ через специальный раздел в интерфейсе «ЭЛАР» или по email:</p>
+                        <div class="highlight">
+                            <p id="contactEmail"><strong>Email:</strong> support.elar@kgtu.ru</p>
+                            <p id="contactHours"><strong>Часы работы поддержки:</strong> Пн-Пт, 9:00-18:00</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo-container">
+                <img src="img/logo_w.png" alt="Логотип ЭЛАР" class="footer-logo">
+            </div>
+            <div class="footer-info">
+                <p id="footerText1">©2025 AXL Team. Единая цифровая экосистема «ЭЛАР»</p>
+                <p id="footerText2">Все права защищены. Объединяем образование в одном пространстве.</p>
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:support.elar@kgtu.ru" class="contact-link">support.elar@kgtu.ru</a>
+                <p id="footerText3" class="contact-link">Версия политики: 1.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+        const ruTexts = {
+           
+            policyTitle: "Политика пользования цифровой экосистемой «ЭЛАР»",
+            policySubtitle: "Единая платформа КГТУ для учебного процесса и управления",
+            
+           
+            section1Title: "1. Общие положения",
+            section1Text1: "1.1. Единая цифровая экосистема «ЭЛАР» (далее – Система) – это защищенная онлайн-платформа, созданная для КГТУ с целью объединения студентов, преподавателей, старост и администрации в едином информационно-коммуникационном пространстве.",
+            section1Text2: "1.2. Система предоставляет персонализированный рабочий стол, инструменты для отслеживания успеваемости («Учебный пульс»), прогнозирования академических рисков, формирования аналитических отчетов, управления расписанием и коммуникацией.",
+            section1Text3: "1.3. Настоящая Политика определяет правила доступа, использования Системы и ответственность пользователей.",
+            section1Text4: "1.4. Регистрируясь и входя в Систему, пользователь подтверждает, что ознакомлен, полностью согласен и обязуется соблюдать все условия настоящей Политики.",
+            
+           
+            section2Title: "2. Учетные записи и доступ",
+            section2Text1: "2.1. Доступ к Системе предоставляется исключительно студентам, преподавателям, сотрудникам и администрации КГТУ на основании актуальных данных из университетских баз.",
+            section2Text2: "2.2. Каждый пользователь получает уникальную учетную запись (логин и пароль). Запрещено передавать свои учетные данные третьим лицам, создавать фиктивные аккаунты или получать доступ под чужим именем.",
+            section2Text3: "2.3. Пользователь несет полную ответственность за все действия, совершенные под его учетной записью. При утере данных или подозрении на несанкционированный доступ необходимо немедленно изменить пароль и уведомить службу технической поддержки.",
+            section2Text4: "2.4. Администрация КГТУ оставляет за собой право приостанавливать или блокировать учетные записи при нарушении настоящей Политики или внутренних регламентов университета.",
+            
+           
+            section3Title: "3. Правила использования и поведения",
+            section3Text1: "Пользователь обязуется использовать Систему <strong>ЭЛАР</strong> добросовестно и исключительно в целях, связанных с учебным процессом, преподаванием и административной деятельностью в КГТУ.",
+            prohibitedTitle: "Категорически запрещается:",
+            prohibited1: "<strong>Нарушать законы РФ и университетские правила:</strong> Размещать противоправные, дискриминационные или оскорбительные материалы.",
+            prohibited2: "<strong>Создавать помехи в работе:</strong> Загружать вредоносное ПО, пытаться взломать или нарушить работоспособность Системы.",
+            prohibited3: "<strong>Нарушать конфиденциальность:</strong> Публиковать персональные данные других пользователей без их согласия.",
+            prohibited4: "<strong>Вводить в заблуждение:</strong> Размещать заведомо ложную информацию, выдавать себя за другого человека.",
+            prohibited5: "<strong>Злоупотреблять коммуникацией:</strong> Рассылать спам, рекламные материалы.",
+            prohibited6: "<strong>Нарушать академическую добросовестность:</strong> Фальсифицировать данные в «Учебном пульсе» или отчетах.",
+            
+           
+            section4Title: "4. Конфиденциальность и данные",
+            section4Text1: "4.1. Система «ЭЛАР» обрабатывает персональные данные пользователей в строгом соответствии с Федеральным законом № 152-ФЗ «О персональных данных» и внутренней политикой конфиденциальности КГТУ.",
+            section4Text2: "4.2. Администрация КГТУ принимает все необходимые технические и организационные меры для защиты данных, хранящихся в Системе.",
+            section4Text3: "4.3. Пользователь дает согласие на обработку своих персональных данных, предоставленных университету, для целей функционирования Системы.",
+            section4Text4: "4.4. Аналитические данные (агрегированные и обезличенные), полученные с помощью «Учебного пульса» и отчетов, могут использоваться университетом для улучшения образовательного процесса.",
+            
+     
+            section5Title: "5. Функциональные возможности и ответственность",
+            section5Text1: "5.1. <strong>Персонализированный рабочий стол:</strong> Пользователь может настраивать вид своего рабочего стола в рамках предоставленных интерфейсных возможностей (светлая/тёмная тема, виджеты).",
+            section5Text2: "5.2. <strong>«Учебный пульс» и прогнозирование:</strong> Данные сервиса носят информационно-аналитический характер и являются инструментом для своевременного принятия решений.",
+            section5Text3: "5.3. <strong>Аналитические отчеты:</strong> Преподаватели и администрация несут ответственность за корректность интерпретации данных.",
+            section5Text4: "5.4. <strong>Расписание и коммуникация:</strong> Пользователь обязан регулярно проверять актуальное расписание и официальные объявления в Системе.",
+            section5Text5: "5.5. Администрация КГТУ и разработчики Системы <strong>не несут ответственности</strong> за косвенные убытки или упущенную выгоду, связанные с использованием Системы.",
+            
+            
+            section6Title: "6. Заключительные положения",
+            section6Text1: "6.1. КГТУ оставляет за собой право в одностороннем порядке изменять настоящую Политику. Актуальная версия всегда публикуется в Системе «ЭЛАР».",
+            section6Text2: "6.2. Все споры, возникающие в связи с использованием Системы, разрешаются в соответствии с законодательством Российской Федерации.",
+            section6Text3: "6.3. Факт использования вами Системы «ЭЛАР» после внесения любых изменений в Политику означает ваше согласие с этими изменениями.",
+            
+          
+            section7Title: "7. Контакты для обращений",
+            section7Text1: "По всем вопросам, связанным с работой Системы, нарушением настоящей Политики или техническими проблемами, обращайтесь в службу поддержки КГТУ через специальный раздел в интерфейсе «ЭЛАР» или по email:",
+            contactEmail: "<strong>Email:</strong> support.elar@kgtu.ru",
+            contactHours: "<strong>Часы работы поддержки:</strong> Пн-Пт, 9:00-18:00",
+            
+          
+            footerText1: "© 2025 AXL team. Единая цифровая экосистема «ЭЛАР»",
+            footerText2: "Все права защищены. Объединяем образование в одном пространстве.",
+            footerText3: "Версия политики: 1.0",
+
+            langText: "Русский",
+            langFlag: "🇷🇺"
+        };
+
+        const enTexts = {
+            policyTitle: "User Policy for ELAR Digital Ecosystem",
+            policySubtitle: "KGTU's Unified Platform for Educational Process and Management",
+            
+            section1Title: "1. General Provisions",
+            section1Text1: "1.1. The Unified Digital Ecosystem 'ELAR' (hereinafter – the System) is a secure online platform created for KGTU to unite students, teachers, group leaders, and administration in a single information and communication space.",
+            section1Text2: "1.2. The System provides a personalized dashboard, tools for tracking academic performance ('Learning Pulse'), predicting academic risks, generating analytical reports, managing schedules and communication.",
+            section1Text3: "1.3. This Policy defines the rules of access, use of the System and user responsibility.",
+            section1Text4: "1.4. By registering and logging into the System, the user confirms that they have read, fully agree and undertake to comply with all terms of this Policy.",
+            
+
+            section2Title: "2. Accounts and Access",
+            section2Text1: "2.1. Access to the System is provided exclusively to students, teachers, staff and administration of KGTU based on current data from university databases.",
+            section2Text2: "2.2. Each user receives a unique account (login and password). It is prohibited to transfer credentials to third parties, create fake accounts or gain access under someone else's name.",
+            section2Text3: "2.3. The user is fully responsible for all actions performed under their account. In case of data loss or suspected unauthorized access, immediately change the password and notify technical support.",
+            section2Text4: "2.4. The KGTU Administration reserves the right to suspend or block accounts in case of violation of this Policy or internal university regulations.",
+            
+
+            section3Title: "3. Rules of Use and Conduct",
+            section3Text1: "The user undertakes to use the <strong>ELAR</strong> System in good faith and exclusively for purposes related to the educational process, teaching and administrative activities at KGTU.",
+            prohibitedTitle: "Strictly prohibited:",
+            prohibited1: "<strong>Violate laws and university rules:</strong> Post unlawful, discriminatory or offensive materials.",
+            prohibited2: "<strong>Interfere with operation:</strong> Upload malicious software, attempt to hack or disrupt the System's functionality.",
+            prohibited3: "<strong>Violate confidentiality:</strong> Publish personal data of other users without their consent.",
+            prohibited4: "<strong>Mislead:</strong> Post knowingly false information, impersonate another person.",
+            prohibited5: "<strong>Abuse communication:</strong> Send spam, advertising materials.",
+            prohibited6: "<strong>Violate academic integrity:</strong> Falsify data in 'Learning Pulse' or reports.",
+            
+
+            section4Title: "4. Confidentiality and Data",
+            section4Text1: "4.1. The 'ELAR' System processes personal data of users in strict accordance with Federal Law No. 152-FZ 'On Personal Data' and KGTU's internal privacy policy.",
+            section4Text2: "4.2. The KGTU Administration takes all necessary technical and organizational measures to protect data stored in the System.",
+            section4Text3: "4.3. The user consents to the processing of their personal data provided to the university for the purposes of the System's functioning.",
+            section4Text4: "4.4. Analytical data (aggregated and anonymized) obtained through 'Learning Pulse' and reports may be used by the university to improve the educational process.",
+            
+
+            section5Title: "5. Functionality and Responsibility",
+            section5Text1: "5.1. <strong>Personalized Dashboard:</strong> The user can customize the view of their dashboard within the provided interface capabilities (light/dark theme, widgets).",
+            section5Text2: "5.2. <strong>'Learning Pulse' and Forecasting:</strong> The service data is informational and analytical in nature and serves as a tool for timely decision-making.",
+            section5Text3: "5.3. <strong>Analytical Reports:</strong> Teachers and administration are responsible for correct interpretation of data.",
+            section5Text4: "5.4. <strong>Schedule and Communication:</strong> The user is obliged to regularly check the current schedule and official announcements in the System.",
+            section5Text5: "5.5. The KGTU Administration and System developers <strong>are not liable</strong> for indirect losses or lost profits related to the use of the System.",
+
+            section6Title: "6. Final Provisions",
+            section6Text1: "6.1. KGTU reserves the right to unilaterally change this Policy. The current version is always published in the 'ELAR' System.",
+            section6Text2: "6.2. All disputes arising in connection with the use of the System shall be resolved in accordance with the legislation of the Russian Federation.",
+            section6Text3: "6.3. Your use of the 'ELAR' System after any changes to the Policy means your acceptance of those changes.",
+
+            section7Title: "7. Contact Information",
+            section7Text1: "For all questions related to the System's operation, violation of this Policy, or technical problems, contact KGTU support through the special section in the 'ELAR' interface or by email:",
+            contactEmail: "<strong>Email:</strong> support.elar@kgtu.ru",
+            contactHours: "<strong>Support hours:</strong> Mon-Fri, 9:00-18:00",
+
+            footerText1: "© 2025 AXL team. Unified Digital Ecosystem 'ELAR'",
+            footerText2: "All rights reserved. Uniting education in one space.",
+            footerText3: "Policy version: 1.0",
+
+            langText: "English",
+            langFlag: "🇬🇧"
+        };
+
+        let isEnglish = false;
+        const langToggle = document.getElementById('langToggle');
+        const langText = document.getElementById('langText');
+        const langFlag = document.getElementById('langFlag');
+
+        function toggleLanguage() {
+            isEnglish = !isEnglish;
+            const texts = isEnglish ? enTexts : ruTexts;
+            
+
+            document.querySelectorAll('.policy-content section').forEach(section => {
+                section.style.opacity = '0.7';
+                section.style.transform = 'translateY(5px)';
+            });
+            
+
+            Object.keys(texts).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerHTML = texts[key];
+                }
+            });
+            
+
+            if (isEnglish) {
+                langToggle.classList.add('active');
+                langToggle.style.background = 'var(--accent-blue)';
+                langToggle.style.color = 'var(--white)';
+            } else {
+                langToggle.classList.remove('active');
+                langToggle.style.background = 'var(--white)';
+                langToggle.style.color = 'var(--primary-blue)';
+            }
+            
+
+            setTimeout(() => {
+                document.querySelectorAll('.policy-content section').forEach(section => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                    section.style.transition = 'all 0.3s ease-out';
+                });
+            }, 50);
+        }
+
+
+        langToggle.addEventListener('click', toggleLanguage);
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            Object.keys(ruTexts).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerHTML = ruTexts[key];
+                }
+            });
+            
+            langToggle.style.background = 'var(--white)';
+            langToggle.style.color = 'var(--primary-blue)';
+        });
+    </script>
+</body>
+</html>
