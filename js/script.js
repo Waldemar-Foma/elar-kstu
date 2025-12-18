@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // Таймер обратного отсчета
-    const launchDate = new Date('December 22, 2025 23:59:59').getTime();
+    const launchDate = new Date('Februare 12, 2025 23:59:59').getTime();
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
