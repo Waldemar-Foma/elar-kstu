@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документы | ЭЛАР</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="fav.png" type="image/png">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="ЭЛАР логотип" class="logo-img">
+            </a>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html#about" class="nav-link">Главная</a></li>
+                    <li><a href="index.html#features" class="nav-link">Возможности</a></li>
+                    <li><a href="index.html#timer" class="nav-link">До запуска</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Контакты</a></li>
+                    <li><a href="documents.html" class="nav-link active">Документация</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Бургер меню для мобильных -->
+            <button class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Мобильное меню -->
+            <div class="mobile-nav" id="mobileNav">
+                <div class="mobile-nav-header">
+                    <a href="index.html" class="logo">
+                    </a>
+                    <button class="close-menu" id="closeMenu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <ul>
+                    <li><a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="index.html#features" class="mobile-nav-link"><i class="fas fa-star"></i> Возможности</a></li>
+                    <li><a href="index.html#timer" class="mobile-nav-link"><i class="fas fa-clock"></i> До запуска</a></li>
+                    <li><a href="index.html#contact" class="mobile-nav-link"><i class="fas fa-envelope"></i> Контакты</a></li>
+                    <li><a href="documents.html" class="mobile-nav-link active"><i class="fas fa-file-alt"></i> Документация</a></li>
+                </ul>
+                <div class="mobile-contact">
+                    <p>Калининград, КГТУ</p>
+                    <li><a href="mailto:elar-kstu@gmail.com"><i class="fas fa-envelope"></i> elar-kstu@gmail.com</a></li>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Documents Hero Section -->
+    <section class="hero" style="padding: 150px 0 80px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge animate__animated animate__fadeInDown">
+                    <span>Официальные документы</span>
+                </div>
+                <h1 class="animate__animated animate__fadeInUp animate__delay-1s">Документация проекта ЭЛАР</h1>
+                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-2s">Официальные документы, регламенты и материалы проекта</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section class="features" style="padding: 60px 0 100px;">
+        <div class="container">
+            <!-- Категория: Поддержка -->
+            <div class="documents-category animate-on-scroll">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Поддержка от ВУЗа</h2>
+                <div class="documents-grid">
+                    <div class="document-card">
+                        <div class="document-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="document-content">
+                            <h3 class="document-title">Письмо поддержки от КГТУ</h3>
+                            <p class="document-description">Официальное письмо от руководства Калининградского государственного технического университета о поддержке проекта ЭЛАР</p>
+                            <div class="document-meta">
+                                <span><i class="far fa-calendar"></i> 19.12.2025</span>
+                                <span><i class="far fa-file-pdf"></i> PDF</span>
+                            </div>
+                            <div class="document-actions">
+                                <a href="docs/support_letter.pdf" class="btn btn-primary" target="_blank">
+                                    <i class="fas fa-eye"></i> Просмотреть онлайн
+                                </a>
+                                <a href="docs/support_letter.pdf" class="btn btn-secondary" download>
+                                    <i class="fas fa-download"></i> Скачать
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Категория: Бренд -->
+            <div class="documents-category animate-on-scroll">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 30px; margin-top: 60px;">Бренд и дизайн</h2>
+                <div class="documents-grid">
+                    <div class="document-card">
+                        <div class="document-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="document-content">
+                            <h3 class="document-title">Брендбук ЭЛАР</h3>
+                            <p class="document-description">Полное руководство по использованию бренда: логотип, цвета, шрифты, правила применения</p>
+                            <div class="document-meta">
+                                <span><i class="far fa-calendar"></i> x.12.2025</span>
+                                <span><i class="far fa-file-pdf"></i> PDF</span>
+                            </div>
+                            <div class="document-actions">
+                                <a href="docs/brandbook.pdf" class="btn btn-primary" target="_blank">
+                                    <i class="fas fa-eye"></i> Просмотреть онлайн
+                                </a>
+                                <a href="docs/brandbook.pdf" class="btn btn-secondary" download>
+                                    <i class="fas fa-download"></i> Скачать
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Категория: Юридические документы -->
+            <div class="documents-category animate-on-scroll">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 30px; margin-top: 60px;">Юридические документы</h2>
+                <div class="documents-grid">
+                    <div class="document-card">
+                        <div class="document-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="document-content">
+                            <h3 class="document-title">Политика конфиденциальности</h3>
+                            <p class="document-description">Правила обработки и защиты персональных данных пользователей платформы ЭЛАР</p>
+                            <div class="document-meta">
+                                <span><i class="far fa-calendar"></i> 01.12.2025</span>
+                                <span><i class="far fa-file-alt"></i> WEB</span>
+                            </div>
+                            <div class="document-actions">
+                                <a href="privacy_politics.html" class="btn btn-primary">
+                                    <i class="fas fa-eye"></i> Ознакомиться
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="document-card">
+                        <div class="document-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="document-content">
+                            <h3 class="document-title">Условия использования</h3>
+                            <p class="document-description">Правила и условия использования платформы ЭЛАР</p>
+                            <div class="document-meta">
+                                <span><i class="far fa-calendar"></i> 01.12.2025</span>
+                                <span><i class="far fa-file-alt"></i> WEB</span>
+                            </div>
+                            <div class="document-actions">
+                                <a href="terms_of_using.html" class="btn btn-primary">
+                                    <i class="fas fa-eye"></i> Ознакомиться
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="document-card">
+                        <div class="document-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="document-content">
+                            <h3 class="document-title">Согласие на обработку персональных данных</h3>
+                            <p class="document-description">Форма согласия пользователя на обработку персональных данных</p>
+                            <div class="document-meta">
+                                <span><i class="far fa-calendar"></i> 01.12.2025</span>
+                                <span><i class="far fa-file-alt"></i> WEB</span>
+                            </div>
+                            <div class="document-actions">
+                                <a href="personal_data.html" class="btn btn-primary">
+                                    <i class="fas fa-eye"></i> Ознакомиться
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Viewer Modal -->
+    <div class="pdf-modal" id="pdfModal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <h3 id="pdfModalTitle">Просмотр документа</h3>
+                <button class="close-pdf-modal" id="closePdfModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="pdf-modal-body">
+                <iframe id="pdfViewer" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="img/logo_w.png" alt="ЭЛАР логотип" class="logo-img">
+                        <span>ЭЛАР</span>
+                    </div>
+                    <p class="footer-desc">Современная цифровая платформа, созданная для Калининградского государственного технического университета с целью полной цифровизации учебного процесса.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Проект</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">О нас</a></li>
+                        <li><a href="index.html#features">Возможности</a></li>
+                        <li><a href="index.html#timer">До запуска</a></li>
+                        <li><a href="documents.html">Документация</a></li>
+                        <li><a href="#">Вопросы и ответы</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:elar-kstu@gmail.com"><i class="fas fa-envelope"></i> elar-kstu@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Калининград, КГТУ</li>
+                        <li><i class="fas fa-map-pin"></i> Советский проспект, 1</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Подписаться на новости</h3>
+                    <p class="subscribe-text">Узнайте первым о запуске платформы</p>
+                    <form class="subscribe-form" id="subscribeForm">
+                        <div class="input-group">
+                            <input type="email" placeholder="Ваш email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <div class="form-message" id="formMessage"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 ЭЛАР. Электронная Личная Академическая Регистр-система. Все права защищены.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy_politics.html">Политика конфиденциальности</a>
+                    <a href="terms_of_using.html">Условия использования</a>
+                    <a href="agreement_of_use.html">Согласие на обработку персональных данных</a>
+                    <a href="documents.html">Документация</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/documents.js"></script>
+</body>
+</html>
