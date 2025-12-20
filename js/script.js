@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // Таймер обратного отсчета
-    const launchDate = new Date('Februare 12, 2026 23:59:59').getTime();
+    const launchDate = new Date('February 12, 2026 23:59:59').getTime();
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
@@ -150,10 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Анимация статистики
-    function animateStats() {
-        const statValues = document.querySelectorAll('.stat-value');
+    // Анимация статистики
+function animateStats() {
+    const statValues = document.querySelectorAll('.stat-value');
+    
+    statValues.forEach(stat => {
+        const targetValue = stat.textContent;
         
-        statValues.forEach(stat => {
+        // Для числовых значений с анимацией
+        if (stat.hasAttribute('data-count')) {
             const target = parseInt(stat.getAttribute('data-count')) || 0;
             const increment = Math.max(target / 100, 1);
             let current = 0;
@@ -167,14 +172,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     stat.textContent = target;
                     // Добавляем знак процента или плюс
-                    if (stat.textContent === '99') stat.textContent += '%';
-                    if (stat.textContent === '24') stat.textContent += '/7';
+                    if (targetValue.includes('%')) stat.textContent += '%';
+                    if (targetValue.includes('/')) {
+                        const parts = targetValue.split('/');
+                        stat.textContent = target + '/' + parts[1];
+                    }
                 }
             };
             
             updateStat();
-        });
-    }
+        } 
+        // Для статических значений (без анимации)
+        else {
+            stat.textContent = targetValue;
+        }
+    });
+}
     
     // Наблюдатель для анимации статистики
     const statsObserver = new IntersectionObserver((entries) => {
