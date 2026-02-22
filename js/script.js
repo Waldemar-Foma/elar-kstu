@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    const launchDate = new Date('February 12, 2026 23:59:59').getTime();
+    const launchDate = new Date('April 26, 2026 23:59:59').getTime();
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
+    
+    // Объявляем переменные для прогресс-бара здесь, чтобы они были доступны во всех функциях
+    const progressFill = document.getElementById('progressFill');
+    const progressPercent = document.getElementById('progressPercent');
     
     let timerInterval;
     let lastValues = {
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 timerNote.innerHTML = 'Запуск состоялся! <span class="highlight">Платформа ЭЛАР доступна</span>';
             }
             
-            // Меняем прогресс-бар на 100%
+            // Меняем прогресс-бар на 100% - теперь progressFill и progressPercent доступны
             if (progressFill && progressPercent) {
                 progressFill.style.width = '100%';
                 progressPercent.textContent = '100%';
@@ -86,9 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         timerInterval = setInterval(updateTimer, 1000);
     }
     
-    // Анимация прогресс-бара
-    const progressFill = document.getElementById('progressFill');
-    const progressPercent = document.getElementById('progressPercent');
+    // Анимация прогресс-бара - убираем повторное объявление переменных
     let progressValue = 0;
     const targetProgress = 85;
     
@@ -140,44 +142,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Анимация статистики
-    // Анимация статистики
-function animateStats() {
-    const statValues = document.querySelectorAll('.stat-value');
-    
-    statValues.forEach(stat => {
-        const targetValue = stat.textContent;
+    function animateStats() {
+        const statValues = document.querySelectorAll('.stat-value');
         
-        // Для числовых значений с анимацией
-        if (stat.hasAttribute('data-count')) {
-            const target = parseInt(stat.getAttribute('data-count')) || 0;
-            const increment = Math.max(target / 100, 1);
-            let current = 0;
+        statValues.forEach(stat => {
+            const targetValue = stat.textContent;
             
-            const updateStat = () => {
-                if (current < target) {
-                    current += increment;
-                    if (current > target) current = target;
-                    stat.textContent = Math.round(current);
-                    setTimeout(updateStat, 20);
-                } else {
-                    stat.textContent = target;
-                    // Добавляем знак процента или плюс
-                    if (targetValue.includes('%')) stat.textContent += '%';
-                    if (targetValue.includes('/')) {
-                        const parts = targetValue.split('/');
-                        stat.textContent = target + '/' + parts[1];
+            // Для числовых значений с анимацией
+            if (stat.hasAttribute('data-count')) {
+                const target = parseInt(stat.getAttribute('data-count')) || 0;
+                const increment = Math.max(target / 100, 1);
+                let current = 0;
+                
+                const updateStat = () => {
+                    if (current < target) {
+                        current += increment;
+                        if (current > target) current = target;
+                        stat.textContent = Math.round(current);
+                        setTimeout(updateStat, 20);
+                    } else {
+                        stat.textContent = target;
+                        // Добавляем знак процента или плюс
+                        if (targetValue.includes('%')) stat.textContent += '%';
+                        if (targetValue.includes('/')) {
+                            const parts = targetValue.split('/');
+                            stat.textContent = target + '/' + parts[1];
+                        }
                     }
-                }
-            };
-            
-            updateStat();
-        } 
-        // Для статических значений (без анимации)
-        else {
-            stat.textContent = targetValue;
-        }
-    });
-}
+                };
+                
+                updateStat();
+            } 
+            // Для статических значений (без анимации)
+            else {
+                stat.textContent = targetValue;
+            }
+        });
+    }
     
     // Наблюдатель для анимации статистики
     const statsObserver = new IntersectionObserver((entries) => {
@@ -622,5 +623,3 @@ function throttle(func, limit) {
         }
     };
 }
-
-
