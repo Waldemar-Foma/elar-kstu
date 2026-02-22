@@ -1,14 +1,11 @@
-// DOM готов
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Таймер обратного отсчета
     const launchDate = new Date('February 12, 2026 23:59:59').getTime();
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
     
-    // Глобальные переменные для таймера
     let timerInterval;
     let lastValues = {
         days: '00',
@@ -17,26 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
         seconds: '00'
     };
     
-    // Улучшенная функция обновления значений таймера
     function updateTimerValue(element, newValue, unit) {
         const oldValue = parseInt(element.textContent);
         if (oldValue === newValue) return;
         
-        // Форматируем значение (добавляем ведущий ноль)
         const formattedValue = newValue.toString().padStart(2, '0');
         
-        // Сохраняем текущее значение для проверки изменений
         lastValues[unit] = formattedValue;
         
-        // Добавляем класс анимации
         element.classList.add('updating');
         
-        // Обновляем значение после начала анимации
         setTimeout(() => {
             element.textContent = formattedValue;
         }, 300);
         
-        // Убираем класс анимации после её завершения
         setTimeout(() => {
             element.classList.remove('updating');
         }, 600);
@@ -632,3 +623,4 @@ function throttle(func, limit) {
         }
     };
 }
+
