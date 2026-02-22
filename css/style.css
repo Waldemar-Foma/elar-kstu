@@ -48,7 +48,6 @@ body {
     width: 100%;
 }
 
-/* Улучшения для предотвращения горизонтального скролла */
 img, video, canvas {
     max-width: 100%;
     height: auto;
@@ -1827,3 +1826,4 @@ footer {
         transform: translateY(0);
     }
 }
+
