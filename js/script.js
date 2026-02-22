@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (secondsEl) updateTimerValue(secondsEl, seconds, 'seconds');
     }
     
-    // Запуск таймера
     if (daysEl && hoursEl && minutesEl && secondsEl) {
         updateTimer();
         timerInterval = setInterval(updateTimer, 1000);
@@ -623,4 +622,5 @@ function throttle(func, limit) {
         }
     };
 }
+
 
