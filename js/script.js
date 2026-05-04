@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    const launchDate = new Date('April 26, 2026 23:59:59').getTime();
+    const launchDate = new Date('August 30, 2026 11:59:59').getTime();
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
