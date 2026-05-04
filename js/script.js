@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Анимация прогресс-бара - убираем повторное объявление переменных
     let progressValue = 0;
-    const targetProgress = 85;
+    const targetProgress = 62;
     
     function animateProgressBar() {
         if (progressValue < targetProgress) {
